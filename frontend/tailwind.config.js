@@ -4,14 +4,16 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: ['Inter', 'system-ui', 'sans-serif'],
+      sans: ["Inter", "system-ui", "sans-serif"],
+      geist: ["Geist", "sans-serif"],
+      "geist-mono": ["Geist Mono", "monospace"],
     },
     extend: {
       animation: {
         shimmer: "shimmer 2s linear infinite",
         move: "move 5s linear infinite",
         "fade-in-up": "fadeInUp 0.6s ease forwards",
-        "float": "float 6s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
         "pulse-glow": "pulseGlow 2s ease-in-out infinite",
         "cell-ripple": "ripple 2s ease-out forwards",
         "ripple-fill": "ripple-fill 1s forwards",

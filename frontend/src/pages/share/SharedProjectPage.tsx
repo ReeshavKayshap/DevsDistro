@@ -68,7 +68,7 @@ export default function SharedProjectPage() {
 
   if (!isValid) {
     return (
-      <div className="min-h-screen bg-white dark:bg-[#050505] text-neutral-800 dark:text-white font-space flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background dark:bg-background text-foreground dark:text-foreground font-space flex items-center justify-center p-4">
         <SEO
           title="Invalid Project Link"
           description="This DevsDistro project share link is invalid."
@@ -92,7 +92,7 @@ export default function SharedProjectPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-white dark:bg-[#050505] flex items-center justify-center">
+      <div className="min-h-screen bg-background dark:bg-background flex items-center justify-center">
         <SEO
           title="Project Preview"
           description="Loading a shared DevsDistro project preview."
@@ -105,7 +105,7 @@ export default function SharedProjectPage() {
 
   if (isError || !project) {
     return (
-      <div className="min-h-screen bg-white dark:bg-[#050505] text-neutral-800 dark:text-white font-space flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background dark:bg-background text-foreground dark:text-foreground font-space flex items-center justify-center p-4">
         <SEO
           title="Project Not Found"
           description="This DevsDistro project is unavailable or has been removed."
@@ -171,7 +171,7 @@ export default function SharedProjectPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#050505] text-neutral-800 dark:text-white font-space selection:bg-red-500 selection:text-white transition-colors duration-300">
+    <div className="min-h-screen bg-background dark:bg-background text-foreground dark:text-foreground font-space selection:bg-red-500 selection:text-white transition-colors duration-300">
       <SEO
         title={`${project.title} by ${sellerName}`}
         description={projectDescription}

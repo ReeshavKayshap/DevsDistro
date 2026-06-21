@@ -58,7 +58,7 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen text-gray-900 bg-white dark:text-white dark:bg-[#050505] font-space selection:bg-red-500 selection:text-white transition-colors duration-300 relative flex flex-col overflow-hidden">
+    <div className="min-h-screen text-foreground bg-background dark:text-foreground dark:bg-background font-space selection:bg-red-500 selection:text-white transition-colors duration-300 relative flex flex-col overflow-hidden">
       <SEO
         title="Authentication"
         description="Sign in to DevsDistro with GitHub to buy or sell repositories."

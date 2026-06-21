@@ -90,7 +90,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen text-gray-900 bg-white dark:text-white relative dark:bg-[#050505] font-space selection:bg-red-500 selection:text-white transition-colors duration-300">
+    <div className="min-h-screen bg-background text-foreground dark:bg-background dark:text-foreground relative  font-space selection:bg-red-500 selection:text-white transition-colors duration-300">
       <SEO
         title={SITE_NAME}
         description={DEFAULT_DESCRIPTION}
