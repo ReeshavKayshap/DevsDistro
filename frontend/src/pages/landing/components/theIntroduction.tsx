@@ -1,8 +1,8 @@
-import { ArrowRight, Code2 } from "lucide-react";
-import githubLockupBlackUrl from "@/assets/brand/github-lockup-black.svg?url";
-import solanaLogoUrl from "@/assets/brand/solana-logo.svg?url";
+import { Code2, Github } from "lucide-react";
+// import githubLockupBlackUrl from "@/assets/brand/github-lockup-black.svg?url";
+// import solanaLogoUrl from "@/assets/brand/solana-logo.svg?url";
 
-import { landingPrimaryButtonClassName } from "./landingButtonStyles";
+// import { landingPrimaryButtonClassName } from "./landingButtonStyles";
 import Dashboard from "./Dashboard";
 
 interface PrologueProps {
@@ -11,8 +11,8 @@ interface PrologueProps {
 
 export default function Prologue({ handleAuthNavigate }: PrologueProps) {
   return (
-    <section className=" pt-44 " id="the-introduction">
-      <div className="max-w-[82rem] mx-auto w-full h-full px-3 relative ">
+    <section className=" pt-52 " id="the-introduction">
+      <div className="max-w-[82rem] mx-auto w-full h-full px-3 relative pb-5">
         <div className="flex justify-between">
           <span
             className="text-5xl md:text-7xl lg:text-[55px]
@@ -23,21 +23,32 @@ export default function Prologue({ handleAuthNavigate }: PrologueProps) {
           </span>
 
           <div
-            className="relative z-30 mt-12 flex flex-col gap-4  items-end
+            className="relative z-30 flex flex-col gap-4  items-end justify-end
            pointer-events-auto"
           >
             <p className="text-end">
               Open marketplace where creators sell repositories <br /> priced in
               USD, settled on Solana, delivered instantly.
             </p>
-            <button
-              onClick={handleAuthNavigate}
-              className="inline-flex items-center gap-2 rounded-xl bg-neutral-900 dark:bg-white
-               border-[3px] border-neutral-800 text-white dark:text-black font-bold px-4 py-1.5 text-[12px]"
-            >
-              Get Started
-              <Code2 size={18} />
-            </button>
+            <span className="flex gap-8">
+              <button
+                onClick={handleAuthNavigate}
+                className="flex items-center gap-2 rounded-xl dark:bg-neutral-900 bg-white hover:bg-neutral-200 hover:dark:bg-neutral-800/80 transition-all duration-200 ease-out
+               border dark:border-neutral-800 border-neutral-300 text-black dark:text-white font-semibold px-3 py-2 text-[13px]"
+              >
+                Open Source
+                <Github size={18} />
+              </button>
+              <button
+                onClick={handleAuthNavigate}
+                className="flex items-center gap-2 rounded-xl bg-neutral-900 dark:bg-white hover:dark:bg-neutral-200 hover:bg-neutral-800/80 transition-all duration-200 ease-out
+               border border-neutral-800 dark:border-neutral-800 text-white dark:text-black font-semibold px-3 py-2 text-[13px]"
+              >
+                Get Started
+                <Code2 size={18} />
+              </button>
+            </span>
+
             {/* <a
             href="#the-mechanics"
             className="inline-flex items-center gap-2 border-[3px] border-neutral-800/35 bg-neutral-200/90 px-8 py-4 font-space font-bold uppercase tracking-widest text-neutral-800 shadow-[inset_0_0_0_2px_rgba(255,255,255,0.9),inset_0_0_22px_rgba(255,255,255,0.18),0_10px_22px_-18px_rgba(38,38,38,0.34)] transition-all duration-200 hover:bg-neutral-800 hover:text-neutral-200 hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.08),0_10px_22px_-18px_rgba(38,38,38,0.44)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/30 dark:border-white/35 dark:bg-[#151515]/95 dark:text-white dark:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.14),inset_0_0_22px_rgba(255,255,255,0.08),0_10px_24px_-18px_rgba(38,38,38,0.72)] dark:hover:bg-white dark:hover:text-[#151515] dark:hover:shadow-[inset_0_0_0_2px_rgba(0,0,0,0.06),0_10px_24px_-18px_rgba(38,38,38,0.72)]"

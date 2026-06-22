@@ -26,10 +26,10 @@ export default function Header({
 
   return (
     <header
-      className="fixed top-0 z-50 w-full bg-background dark:bg-[#080808] border-b border-neutral-200  dark:border-neutral-700/70
+      className="fixed top-0 z-50 w-full bg-background dark:bg-[#080808] border-b border-neutral-200  dark:border-neutral-800/60
      transition-colors duration-300 "
     >
-      <nav className="flex justify-between items-center px-3 py-2 md:py-3 mx-auto max-w-[82rem]">
+      <nav className="flex justify-between items-center px-3 py-2 md:py-4 mx-auto max-w-[82rem]">
         <Link
           to="/"
           className="flex items-center gap-1 "
@@ -50,7 +50,7 @@ export default function Header({
                 to={isHome ? `#${id}` : `/#${id}`}
                 onClick={() => handleScroll(id)}
                 className="hover:text-neutral-800 dark:hover:text-neutral-100 tracking-wide font-semibold 
-                  relative group text-xs md:text-[14px] darktext-neutral-300/90 text-neutral-600 font-geist transition-all duration-200 ease-out "
+                  relative group text-xs md:text-[14px] dark:text-neutral-300/80 text-neutral-600 font-geist transition-all duration-200 ease-out "
               >
                 <span>{item}</span>
                 {/* <span className="absolute -bottom-2 left-0 h-[2px] w-full origin-center scale-x-0 rounded-full bg-red-500 opacity-0 transition-[transform,opacity] duration-500 ease-premium group-hover:scale-x-100 group-hover:opacity-100 group-focus-visible:scale-x-100 group-focus-visible:opacity-100 motion-reduce:transition-none" /> */}
