@@ -5,9 +5,10 @@ import {
   TrendingUp,
   LogOut,
 } from "lucide-react";
-import DashboardAnimation from "./Dashboard-Animation";
 
-function Dashboard() {
+import DashboardAnimation from "@/pages/landing/components/Dashboard-Animation";
+
+export default function App() {
   const sellerSections = [
     {
       heading: "Dashboard",
@@ -37,12 +38,12 @@ function Dashboard() {
                     y2="-0.51"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0.08" stop-color="#9945FF" />
-                    <stop offset="0.3" stop-color="#8752F3" />
-                    <stop offset="0.5" stop-color="#5497D5" />
-                    <stop offset="0.6" stop-color="#43B4CA" />
-                    <stop offset="0.72" stop-color="#28E0B9" />
-                    <stop offset="0.97" stop-color="#19FB9B" />
+                    <stop offset="0.08" stopColor="#9945FF" />
+                    <stop offset="0.3" stopColor="#8752F3" />
+                    <stop offset="0.5" stopColor="#5497D5" />
+                    <stop offset="0.6" stopColor="#43B4CA" />
+                    <stop offset="0.72" stopColor="#28E0B9" />
+                    <stop offset="0.97" stopColor="#19FB9B" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -89,135 +90,153 @@ function Dashboard() {
       valueHeading: "Status",
       items: [
         { label: "Purchases", value: "5 repos" },
-        { label: "Sales", value: "+12 sales" },
-        { label: "Overview", value: "↗ $3.8k" },
-        { label: "My Projects", value: "3 active" },
+        { label: "Wishlist", value: "+12 sales" },
+        { label: "Purchases", value: "↗ $3.8k" },
       ],
     },
   ];
   return (
-    <div
-      className="w-full bg-white/30 backdrop-blur-md max-w-[90rem] mx-auto
-     rounded-2xl mt-10 flex p-1"
-    >
-      <div className="h-full w-[3%] "></div>
-      <div className="h-full w-[97%] bg-[#0B0B0B] rounded-2xl ">
-        <div className=" border-b border-neutral-600/20 py-2 flex items-center justify-between gap-2 px-3">
-          <span className="flex items-center gap-2">
-            <PanelLeft size={16} className="text-neutral-600" />
-            <span className="text-neutral-300/80 text-sm font-sans">
-              Dashboard
-            </span>
-            <ChevronRight
-              size={16}
-              className="mt-[1.6px] text-neutral-700/80 "
-            />
-            <span className="text-neutral-100 text-sm font-sans">
-              DevsDistro Architecture
-            </span>
-          </span>
+    <>
+      <div className="relative isolate flex shrink-0 lg:mb-16 2xl:justify-center mt-10">
+        <div
+          className="-z-10 pointer-events-none absolute top-1/2 -left-24 h-[40rem] w-[93.5rem]
+           -translate-y-1/2 rounded-[300px] blur-[50px] will-change-transform md:left-1/2 md:h-[53.5rem] md:-translate-x-1/2"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(255, 30, 30, 0.2) 0%, rgba(255, 30, 30, 0.05) 20%, rgba(255, 30, 30, 0.05) 71%, rgba(255, 30, 30, 0.05) 100%, transparent 70%)",
+            opacity: 1,
+          }}
+        ></div>
 
-          <span className="flex items-center gap-2">
-            <button
-              className="text-neutral-300/90 hover:text-neutral-100 active:scale-[97%] duration-200 ease-out bg-neutral-700/20 px-4 py-1 rounded-md 
-            ring-1 ring-neutral-800/80 flex items-center gap-1 cursor-pointer"
-            >
-              <LogOut size={14} className=" mt-px" />
-              <h1 className="text-[13px] font-sans font-semibold ">LogOut</h1>
-            </button>
-            <span className="bg-neutral-700/20 p-1 rounded-sm ring-1 ring-neutral-800/80 active:scale-[97%] cursor-pointer">
-              <Ellipsis size={16} className="text-neutral-300" />
-            </span>
-          </span>
+        <div
+          className="relative z-10 w-full bg-white/5 border border-white/10 backdrop-blur-md max-w-[90rem] mx-auto
+       rounded-2xl flex p-1 shadow-2xl"
+        >
+          <div className="h-full w-[3%] hidden md:block"></div>
+          <div className="h-full w-full md:w-[97%] bg-[#0B0B0B] rounded-xl overflow-hidden">
+            <div className=" border-b border-neutral-600/20 py-2 flex flex-wrap items-center justify-between gap-2 px-3">
+              <span className="flex items-center gap-2">
+                <PanelLeft size={16} className="text-neutral-600" />
+                <span className="text-neutral-400 text-sm font-sans hidden sm:block">
+                  Dashboard
+                </span>
+                <ChevronRight
+                  size={16}
+                  className="mt-[1.6px] text-neutral-700/80 hidden sm:block"
+                />
+                <span className="text-neutral-100 text-sm font-sans font-medium">
+                  DevsDistro Architecture
+                </span>
+              </span>
+
+              <span className="flex items-center gap-2">
+                <button
+                  className="text-neutral-300/90 hover:text-neutral-100 active:scale-[97%] duration-200 ease-out bg-neutral-700/20 px-4 py-1.5 rounded-md 
+             ring-1 ring-neutral-800/80 flex items-center gap-2 cursor-pointer transition-colors hover:bg-neutral-700/40"
+                >
+                  <LogOut size={14} className=" mt-px" />
+                  <span className="text-[13px] font-sans font-semibold ">
+                    LogOut
+                  </span>
+                </button>
+                <span className="bg-neutral-700/20 p-1.5 rounded-md ring-1 ring-neutral-800/80 active:scale-[97%] cursor-pointer hover:bg-neutral-700/40 transition-colors">
+                  <Ellipsis size={16} className="text-neutral-300" />
+                </span>
+              </span>
+            </div>
+
+            <div className="flex flex-col lg:flex-row h-full w-full">
+              <div className="w-full lg:w-[35%] border-b lg:border-b-0 lg:border-r border-neutral-600/20 divide-y divide-neutral-600/20">
+                <div className="p-6">
+                  <span className="text-[11px] uppercase tracking-wider font-bold text-blue-400 bg-blue-500/10 px-2 py-1 rounded-md ">
+                    For sellers
+                  </span>
+
+                  <h1 className="text-2xl font-sans font-medium py-3 text-white">
+                    Turn your code into income
+                  </h1>
+                  <p className="text-sm text-neutral-400 font-sans leading-relaxed">
+                    List your repositories, track sales, and get paid all{" "}
+                    <br className="hidden xl:block" />
+                    from one dashboard.
+                  </p>
+
+                  <div className="mt-10 max-w-xs">
+                    {sellerSections.map((section) => (
+                      <span key={section.heading}>
+                        <span className="text-sm font-medium font-geist py-1 flex gap-24">
+                          <h1 className="text-neutral-300/85 w-24">
+                            {section.heading}
+                          </h1>
+                          <h1>{section.valueHeading}</h1>
+                        </span>
+                        {section.items.map((item) => (
+                          <span
+                            key={item.label}
+                            className="text-sm py-2 flex gap-24 font-medium font-geist"
+                          >
+                            <h1 className="text-neutral-300/85 w-24">
+                              {item.label}
+                            </h1>
+                            {item.value && <h1>{item.value}</h1>}
+                          </span>
+                        ))}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <span className="text-[11px] uppercase tracking-wider font-bold text-green-400 bg-green-500/10 px-2 py-1 rounded-md">
+                    For buyers
+                  </span>
+                  <h1 className="text-2xl font-sans font-medium py-3 text-white">
+                    Find & launch the perfect repo
+                  </h1>
+                  <p className="text-sm text-neutral-400 font-sans leading-relaxed">
+                    Browse thousands of ready-made repositories and ship your
+                    product faster.
+                  </p>
+
+                  <div className="mt-10 max-w-xs">
+                    {buyerSections.map((section) => (
+                      <span key={section.heading}>
+                        <span className="text-sm font-medium font-geist py-1 flex gap-24">
+                          <h1 className="text-neutral-300/85 w-24">
+                            {section.heading}
+                          </h1>
+                          <h1>{section.valueHeading}</h1>
+                        </span>
+                        {section.items.map((item) => (
+                          <span
+                            key={item.label}
+                            className="text-sm py-2 flex gap-24 font-medium font-geist"
+                          >
+                            <h1 className="text-neutral-300/85 w-24">
+                              {item.label}
+                            </h1>
+                            {item.value && <h1>{item.value}</h1>}
+                          </span>
+                        ))}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="w-full lg:w-[65%]">
+                <div className="border-b border-neutral-600/20 py-3 px-6">
+                  <h1 className="text-sm font-medium text-neutral-200">
+                    DevsDistro Pipeline
+                  </h1>
+                </div>
+                <div className="p-2">
+                  <DashboardAnimation />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <span className="flex h-full w-full">
-          <div className="h-full w-[35%] border-r border-neutral-600/20 divide-y divide-neutral-600/20">
-            <div className="p-6">
-              <span className="text-xs font-semibold text-blue-800 bg-blue-400 p-1 rounded-md ">
-                For sellers
-              </span>
-
-              <h1 className="text-2xl font-sans font-medium py-2.5">
-                Turn your code into income
-              </h1>
-              <p className="text-sm text-neutral-300/85 font-sans">
-                List your repositories, track sales, and get paid all <br />
-                from one dashboard.
-              </p>
-
-              <div className="mt-10 max-w-xs">
-                {sellerSections.map((section) => (
-                  <span key={section.heading}>
-                    <span className="text-sm font-medium font-geist py-1 flex gap-24">
-                      <h1 className="text-neutral-300/85 w-24">
-                        {section.heading}
-                      </h1>
-                      <h1>{section.valueHeading}</h1>
-                    </span>
-                    {section.items.map((item) => (
-                      <span
-                        key={item.label}
-                        className="text-sm py-2 flex gap-24 font-medium font-geist"
-                      >
-                        <h1 className="text-neutral-300/85 w-24">
-                          {item.label}
-                        </h1>
-                        {item.value && <h1>{item.value}</h1>}
-                      </span>
-                    ))}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="p-6">
-              <span className="text-xs font-semibold text-green-800 bg-green-400 p-1 rounded-md">
-                For buyers
-              </span>
-              <h1 className="text-2xl font-sans font-medium py-2.5">
-                Find & launch the perfect repo
-              </h1>
-              <p className="text-sm text-neutral-400 font-sans">
-                Browse thousands of ready-made repositories and ship your
-                product faster.
-              </p>
-
-              <div className="mt-10 max-w-xs">
-                {buyerSections.map((section) => (
-                  <span key={section.heading}>
-                    <span className="text-sm font-medium font-geist py-1 flex gap-24">
-                      <h1 className="text-neutral-300/85 w-24">
-                        {section.heading}
-                      </h1>
-                      <h1>{section.valueHeading}</h1>
-                    </span>
-                    {section.items.map((item) => (
-                      <span
-                        key={item.label}
-                        className="text-sm py-2 flex gap-24 font-medium font-geist"
-                      >
-                        <h1 className="text-neutral-300/85 w-24">
-                          {item.label}
-                        </h1>
-                        {item.value && <h1>{item.value}</h1>}
-                      </span>
-                    ))}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="h-full w-[65%] ">
-            <div className=" border-b border-neutral-600/20 py-2  px-3">
-              <h1>DevsDistro Pipeline</h1>
-            </div>
-            <DashboardAnimation />
-          </div>
-        </span>
       </div>
-    </div>
+    </>
   );
 }
-
-export default Dashboard;

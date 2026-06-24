@@ -66,6 +66,16 @@
         "description": "Buy and sell repositories on DevsDistro. List private GitHub repositories, price them in USD, settle payments in SOL, and deliver repository archives instantly."
       }
     </script>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
