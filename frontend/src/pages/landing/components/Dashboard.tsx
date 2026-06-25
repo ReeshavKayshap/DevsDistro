@@ -89,7 +89,7 @@ export default function App() {
       heading: "My Space",
       valueHeading: "Status",
       items: [
-        { label: "Purchases", value: "5 repos" },
+        { label: "Marketplace", value: "5 repos" },
         { label: "Wishlist", value: "+12 sales" },
         { label: "Purchases", value: "↗ $3.8k" },
       ],

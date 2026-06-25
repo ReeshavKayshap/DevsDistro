@@ -1,7 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import MechanicsDiagram from "./MechanicsDiagram";
-import { Lock } from "lucide-react";
+// import MechanicsDiagram from "./MechanicsDiagram";
+import {
+  Ellipsis,
+  Github,
+  GripHorizontal,
+  Key,
+  KeyRound,
+  Loader2,
+  Lock,
+  User,
+} from "lucide-react";
+import LogoIcon from "@/assets/icons/LogoIcon";
 
 const NODE_SEQUENCE_MS = 2800;
 
@@ -74,22 +84,22 @@ export default function TheMechanics() {
     return () => window.clearTimeout(timeout);
   }, [autoMechanicIndex, diagramReplayKey, hasStartedDiagram]);
 
-  const handleStepSelect = (index: number) => {
-    setHasStartedDiagram(true);
-    setAutoMechanicIndex(index);
-    setDiagramReplayKey((currentKey) => currentKey + 1);
-  };
+  // const handleStepSelect = (index: number) => {
+  //   setHasStartedDiagram(true);
+  //   setAutoMechanicIndex(index);
+  //   setDiagramReplayKey((currentKey) => currentKey + 1);
+  // };
 
   return (
     <section
       ref={sectionRef}
-      className="py-32 px-6 md:px-12 bg-white dark:bg-[#050505] text-neutral-900 dark:text-white transition-colors duration-300 relative"
-      id="the-mechanics"
+      className="py-32 px-6 md:px-12  text-neutral-900 dark:text-white transition-colors duration-300 relative"
+      id="mechanics"
     >
       <div className="landing-dotted-rule landing-dotted-b absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl pointer-events-none z-20"></div>
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-16">
-          <div className="flex items-center gap-3 mb-6 border-b-4 border-black/20 dark:border-white/20 pb-4 inline-flex transition-colors w-fit mx-auto md:mx-0">
+          <div className="flex items-center gap-3 mb-6 border-b-4 border-black/20 dark:border-white/20 pb-4  transition-colors w-fit mx-auto md:mx-0">
             <span className="font-space font-bold uppercase tracking-[0.2em] text-xs">
               The Mechanics
             </span>
@@ -103,8 +113,17 @@ export default function TheMechanics() {
           </h2>
         </div>
 
-        <div className="rounded-3xl border border-neutral-200 dark:border-white/10 bg-white dark:bg-[#050505] overflow-hidden shadow-[0_14px_32px_-28px_rgba(38,38,38,0.42)] dark:shadow-[0_14px_34px_-28px_rgba(38,38,38,0.78)] flex flex-col">
-          {/* Mac Window Title Bar */}
+        <div className="flex gap-3 w-full ">
+          <div className="w-full  h-full">
+            <GithubCard />
+          </div>
+          <div className="w-full  h-full">{/* <GithubCard /> */}</div>
+          <div className="w-full bg-neutral-700 h-full">
+            {/* <TicketCard /> */}
+          </div>
+        </div>
+
+        {/* <div className="rounded-3xl border border-neutral-200 dark:border-white/10 bg-white dark:bg-[#050505] overflow-hidden shadow-[0_14px_32px_-28px_rgba(38,38,38,0.42)] dark:shadow-[0_14px_34px_-28px_rgba(38,38,38,0.78)] flex flex-col">
           <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200 dark:border-white/10 bg-neutral-50/80 dark:bg-[#0a0a0a]/80 backdrop-blur-sm relative z-20">
             <div className="group flex space-x-2 absolute left-4 items-center">
               <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-black/10 dark:border-white/10 transition-shadow hover:shadow-[0_0_8px_rgba(255,95,86,0.6)]"></div>
@@ -112,19 +131,16 @@ export default function TheMechanics() {
               <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-black/10 dark:border-white/10 transition-shadow hover:shadow-[0_0_8px_rgba(39,201,63,0.6)]"></div>
             </div>
 
-            {/* Clean Browser Address bar */}
             <div className="mx-auto bg-white/50 dark:bg-black/50 border border-neutral-200 dark:border-white/10 rounded-md px-3 py-1.5 text-[11px] text-neutral-500 dark:text-neutral-400 font-space flex items-center gap-2 shadow-sm w-64 justify-center">
               <Lock size={10} className="opacity-70" />
               <span>devsdistro.com/mechanics</span>
             </div>
           </div>
 
-          {/* Browser Tabs */}
           <div className="flex px-2 pt-2 border-b border-neutral-200 dark:border-white/10 bg-neutral-100/50 dark:bg-neutral-950/50 gap-2 overflow-hidden z-10">
             <div className="px-4 py-2 bg-white dark:bg-[#050505] border-t border-l border-r border-neutral-200 dark:border-white/10 rounded-t-lg text-xs font-space font-bold text-neutral-800 dark:text-neutral-200 flex items-center gap-2 min-w-[140px] relative uppercase tracking-wider">
               <div className="w-1.5 h-1.5 rounded-full bg-red-500"></div>
               Pipeline
-              {/* Active Tab line overlay to hide bottom border */}
               <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-white dark:bg-[#050505]"></div>
             </div>
             <div className="px-4 py-2 text-xs font-space font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-600 flex items-center gap-2 min-w-[140px] hover:bg-black/5 dark:hover:bg-white/5 rounded-t-lg transition-colors cursor-pointer">
@@ -134,7 +150,6 @@ export default function TheMechanics() {
           </div>
 
           <div className="flex flex-col md:flex-row bg-white dark:bg-[#050505] flex-1">
-            {/* Sidebar */}
             <div className="w-full md:w-1/3 border-b md:border-b-0 md:border-r border-neutral-200 dark:border-white/10 p-6 md:p-8 flex flex-col justify-center bg-neutral-50/30 dark:bg-neutral-900/10">
               <div className="font-space font-bold text-[10px] uppercase tracking-widest text-neutral-400 dark:text-neutral-500 mb-8 pb-4 border-b border-neutral-200 dark:border-white/10">
                 Execution Steps
@@ -171,7 +186,7 @@ export default function TheMechanics() {
                             {step.title}
                           </span>
                         </div>
-                        {/* Animated Cursor */}
+
                         {isActive && (
                           <motion.div
                             layoutId="mechanics-cursor"
@@ -204,9 +219,7 @@ export default function TheMechanics() {
               </ul>
             </div>
 
-            {/* Main Content Area */}
             <div className="w-full md:w-2/3 p-6 md:p-12 flex flex-col items-center justify-center relative overflow-visible">
-              {/* SVG (MechanicsDiagram) */}
               <div className="w-[calc(100%+2rem)] md:w-[calc(100%+4rem)] -mx-4 md:-mx-8 mb-10 relative z-10 min-h-[220px] md:min-h-[300px] flex items-center justify-center [&_svg]:!min-w-0 [&_svg]:!w-full [&_svg]:max-w-[1000px] transition-transform">
                 <div className="absolute inset-x-0 -top-10 -bottom-10 bg-[radial-gradient(circle_at_center,rgba(115,115,115,0.46)_1px,transparent_1px)] [background-size:8px_8px] opacity-20 dark:opacity-25 pointer-events-none z-0 blur-[0.5px] [mask-image:linear-gradient(to_bottom,transparent_0,black_2.5rem,black_calc(100%_-_2.5rem),transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0,black_2.5rem,black_calc(100%_-_2.5rem),transparent_100%)]" />
                 <div className="relative z-10 w-full">
@@ -218,7 +231,6 @@ export default function TheMechanics() {
                 </div>
               </div>
 
-              {/* Text changes below SVG */}
               <div className="w-full relative z-10 flex flex-col justify-end pb-2 border-t border-dashed border-neutral-300 dark:border-neutral-800 pt-8">
                 <div className="flex gap-4 items-start">
                   <div className="relative w-full h-[160px] md:h-[120px]">
@@ -244,8 +256,94 @@ export default function TheMechanics() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
 }
+
+const GithubCard = () => (
+  <>
+    <div className="border border-neutral-900 border-b-0 rounded-2xl rounded-b-none shadow-2xl p-1 mask-bottom">
+      <div
+        className="bg-[#0a0a0a] border border-b-0 border-neutral-800/60 rounded-b-none 
+      rounded-xl px-5 py-3 shadow-2xl mb-6  mask-bottom flex flex-col  "
+      >
+        <div className="flex items-center justify-between">
+          <span className="text-neutral-400 font-geist text-xs font-medium tracking-wider">
+            DevsDistro
+          </span>
+          <div className="size-6 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center">
+            <Ellipsis className="size-3 text-neutral-400" />
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2.5 pt-4">
+          <Key className="size-4 text-neutral-500" />
+          <h2 className="text-neutral-300 text-sm font-semibold">
+            GitHub OAuth Connecting...
+          </h2>
+        </div>
+
+        <div className="py-6 flex items-center w-full ">
+          <div className="w-14 h-14 rounded-[14px] border border-neutral-800/80 bg-[#111111] flex items-center justify-center shrink-0 z-10 shadow-lg">
+            <Github className="size-5 " />
+          </div>
+
+          <div className="flex-1 relative h-[2px] flex items-center">
+            <div className="absolute w-full h-[2px] bg-neutral-800/80" />
+
+            <div className="absolute w-full h-full overflow-hidden">
+              <motion.div
+                className="absolute h-[1.9px] w-20 bg-gradient-to-r from-transparent via-red-500 to-transparent blur-[1px]"
+                initial={{ left: "-40%" }}
+                animate={{ left: "120%" }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.5,
+                  ease: "linear",
+                  repeatDelay: 1,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="w-14 h-14 rounded-[14px] border border-neutral-800/80 bg-[#111111] flex items-center justify-center shrink-0 z-10 shadow-lg">
+            <LogoIcon className="size-5" />
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 pb-6">
+          <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#141414] border border-neutral-800/80 rounded-lg">
+            <Loader2 className="size-3 text-neutral-100 animate-spin" />
+            <span className="text-neutral-100 text-[13px] font-medium ">
+              Analyzing...
+            </span>
+          </div>
+          <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#141414] border border-neutral-800/80 rounded-lg">
+            <GripHorizontal className="size-3 text-neutral-500" />
+            <span className="text-neutral-100 text-[13px] font-medium ">
+              Connecting
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="flex flex-col px-2">
+      <span className="text-neutral-100 font-geist-mono text-xs font-semibold tracking-wide">
+        01
+      </span>
+      <span className="flex flex-col gap-1 pt-2">
+        <h1 className="text-white text-[16px] font-semibold tracking-tight">
+          Integration
+        </h1>
+        <p className="text-neutral-400 text-sm leading-relaxed max-w-[95%]">
+          Connect via standard GitHub OAuth and our native App Integration. This
+          securely fetches your selected repositories so you can instantly list
+          them.
+        </p>
+      </span>
+    </div>
+  </>
+);

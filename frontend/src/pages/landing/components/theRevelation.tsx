@@ -7,11 +7,11 @@ export default function TheShift() {
 
   return (
     <section
-      className="py-32 px-6 md:px-12 bg-white dark:bg-[#050505] transition-colors duration-300 relative"
-      id="the-revelation"
+      className="py-32 px-6 md:px-12  transition-colors duration-300 relative"
+      id="revelation"
     >
       {/* Constrained background container */}
-      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-7xl bg-white dark:bg-[#050505] -z-10 transition-colors duration-300 overflow-hidden">
+      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-7xl  -z-10 transition-colors duration-300 overflow-hidden">
         <div
           className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-[120rem] pointer-events-none select-none overflow-hidden hidden md:flex items-center justify-center"
           aria-hidden="true"
@@ -30,7 +30,7 @@ export default function TheShift() {
       <div className="landing-dotted-rule landing-dotted-b absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl pointer-events-none z-20"></div>
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
-        <div className="flex items-center gap-3 mb-16 border-b-4 border-black/20 dark:border-white/20 pb-4 inline-flex transition-colors w-fit mx-auto lg:mx-0">
+        <div className="flex items-center gap-3 mb-16 border-b-4 border-black/20 dark:border-white/20 pb-4 transition-colors w-fit mx-auto lg:mx-0">
           <span className="font-space font-bold uppercase tracking-[0.2em] text-xs">
             The Revelation
           </span>
@@ -74,7 +74,10 @@ export default function TheShift() {
             className="order-2 lg:order-1 flex flex-col gap-6"
           >
             {/* The 99% Block */}
-            <div className="bg-red-500 text-white p-8 md:p-12 transition-all duration-300 flex flex-col justify-between shadow-[0_18px_40px_-32px_rgba(38,38,38,0.5)] dark:shadow-[0_18px_42px_-32px_rgba(38,38,38,0.86)]">
+            <div
+              className="bg-red-500 text-white p-8 md:p-12 transition-all duration-300 flex flex-col justify-between
+             shadow-[0_18px_40px_-32px_rgba(38,38,38,0.5)] dark:shadow-[0_18px_42px_-32px_rgba(38,38,38,0.86)] rounded-2xl"
+            >
               <div className="flex items-center justify-between mb-8">
                 <span className="font-space font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs">
                   Creator Retention
@@ -89,7 +92,11 @@ export default function TheShift() {
             </div>
 
             {/* The Conversion Block */}
-            <div className="bg-gray-100 dark:bg-[#1a1a1a] border-2 border-neutral-800/10 dark:border-white/10 text-neutral-800 dark:text-white p-8 md:p-12 transition-all duration-300 flex items-center justify-between shadow-[0_14px_32px_-28px_rgba(38,38,38,0.42)] dark:shadow-[0_14px_34px_-28px_rgba(38,38,38,0.78)]">
+            <div
+              className="bg-gray-100 dark:bg-[#1a1a1a] border-2 border-neutral-800/10 dark:border-white/10
+             text-neutral-800 dark:text-white p-8 md:p-12 transition-all duration-300 flex items-center rounded-2xl
+             justify-between shadow-[0_14px_32px_-28px_rgba(38,38,38,0.42)] dark:shadow-[0_14px_34px_-28px_rgba(38,38,38,0.78)]"
+            >
               <div>
                 <div className="font-space text-[10px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2">
                   Input Valuation

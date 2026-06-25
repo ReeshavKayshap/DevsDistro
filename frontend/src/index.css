@@ -120,6 +120,16 @@
   }
 } */
 
+@layer utilities {
+.mask-bottom {
+    /* Safari / older browser support */
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+    
+    /* Standard syntax */
+    mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
