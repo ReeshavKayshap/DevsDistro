@@ -5,10 +5,29 @@ import {
   TrendingUp,
   LogOut,
 } from "lucide-react";
-
+import { motion } from "framer-motion";
 import DashboardAnimation from "@/pages/landing/components/Dashboard-Animation";
 
-export default function App() {
+const FadeIn = ({
+  children,
+  delay = 1.3,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, filter: "blur(10px)" }}
+    animate={{ opacity: 1, filter: "blur(0px)" }}
+    transition={{ duration: 0.8, ease: "easeOut", delay }}
+    className={className}
+  >
+    {children}
+  </motion.div>
+);
+
+export default function Dashboard() {
   const sellerSections = [
     {
       heading: "Dashboard",
@@ -99,144 +118,171 @@ export default function App() {
   return (
     <>
       <div className="relative isolate flex shrink-0 lg:mb-16 2xl:justify-center mt-10">
-        <div
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(8px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
           className="-z-10 pointer-events-none absolute top-1/2 -left-24 h-[40rem] w-[93.5rem]
-           -translate-y-1/2 rounded-[300px] blur-[50px] will-change-transform md:left-1/2 md:h-[53.5rem] md:-translate-x-1/2"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(255, 30, 30, 0.38) 0%, rgba(255, 30, 30, 0.09) 30%, rgba(255, 30, 30, 0.06) 60%, rgba(255, 30, 30, 0.06) 100%, transparent 70%)",
-            opacity: 1,
-          }}
-        ></div>
+           -translate-y-1/2 will-change-transform md:left-1/2 md:h-[53.5rem] md:-translate-x-1/2"
+        >
+          <div
+            className="w-full h-full rounded-[300px] blur-[50px]"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(255, 30, 30, 0.35) 0%, rgba(255, 30, 30, 0.04) 30%, rgba(255, 30, 30, 0.06) 60%, rgba(255, 30, 30, 0.06) 100%, transparent 70%)",
+            }}
+          />
+        </motion.div>
 
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
           className="relative z-10 w-full bg-white/5 border border-white/10 backdrop-blur-md max-w-[90rem] mx-auto
-       rounded-2xl flex p-1 shadow-2xl"
+     rounded-2xl flex p-1 shadow-2xl"
         >
           <div className="h-full w-[3%] hidden md:block"></div>
-          <div className="h-full w-full md:w-[97%] bg-[#0B0B0B] rounded-xl overflow-hidden">
-            <div className=" border-b border-neutral-600/20 py-2 flex flex-wrap items-center justify-between gap-2 px-3">
-              <span className="flex items-center gap-2">
-                <PanelLeft size={16} className="text-neutral-600" />
-                <span className="text-neutral-400 text-sm font-sans hidden sm:block">
-                  Dashboard
-                </span>
-                <ChevronRight
-                  size={16}
-                  className="mt-[1.6px] text-neutral-700/80 hidden sm:block"
-                />
-                <span className="text-neutral-100 text-sm font-sans font-medium">
-                  DevsDistro Architecture
-                </span>
-              </span>
-
-              <span className="flex items-center gap-2">
-                <button
-                  className="text-neutral-300/90 hover:text-neutral-100 active:scale-[97%] duration-200 ease-out bg-neutral-700/20 px-4 py-1.5 rounded-md 
-             ring-1 ring-neutral-800/80 flex items-center gap-2 cursor-pointer transition-colors hover:bg-neutral-700/40"
-                >
-                  <LogOut size={14} className=" mt-px" />
-                  <span className="text-[13px] font-sans font-semibold ">
-                    LogOut
+          <div className="h-full w-full md:w-[97%] bg-[#0B0B0B] rounded-xl overflow-hidden z-20">
+            <div className="border-b border-neutral-600/20 ">
+              <FadeIn className="py-2 flex flex-wrap items-center justify-between gap-2 px-3">
+                <span className="flex items-center gap-2">
+                  <PanelLeft size={16} className="text-neutral-600" />
+                  <span className="text-neutral-400 text-sm font-sans hidden sm:block">
+                    Dashboard
                   </span>
-                </button>
-                <span className="bg-neutral-700/20 p-1.5 rounded-md ring-1 ring-neutral-800/80 active:scale-[97%] cursor-pointer hover:bg-neutral-700/40 transition-colors">
-                  <Ellipsis size={16} className="text-neutral-300" />
+                  <ChevronRight
+                    size={16}
+                    className="mt-[1.6px] text-neutral-700/80 hidden sm:block"
+                  />
+                  <span className="text-neutral-100 text-sm font-sans font-medium">
+                    DevsDistro Architecture
+                  </span>
                 </span>
-              </span>
+                <span className="flex items-center gap-2">
+                  <button
+                    className="text-neutral-300/90 hover:text-neutral-100 active:scale-[97%] duration-200 ease-out bg-neutral-700/20 px-4 py-1.5 rounded-md 
+         ring-1 ring-neutral-800/80 flex items-center gap-2 cursor-pointer transition-colors hover:bg-neutral-700/40"
+                  >
+                    <LogOut size={14} className="mt-px" />
+                    <span className="text-[13px] font-sans font-semibold">
+                      LogOut
+                    </span>
+                  </button>
+                  <span className="bg-neutral-700/20 p-1.5 rounded-md ring-1 ring-neutral-800/80 active:scale-[97%] cursor-pointer hover:bg-neutral-700/40 transition-colors">
+                    <Ellipsis size={16} className="text-neutral-300" />
+                  </span>
+                </span>
+              </FadeIn>
             </div>
 
             <div className="flex flex-col lg:flex-row h-full w-full">
               <div className="w-full lg:w-[35%] border-b lg:border-b-0 lg:border-r border-neutral-600/20 divide-y divide-neutral-600/20">
                 <div className="p-6">
-                  <span className="text-[11px] uppercase tracking-wider font-bold text-blue-400 bg-blue-500/10 px-2 py-1 rounded-md ">
-                    For sellers
-                  </span>
-
-                  <h1 className="text-2xl font-sans font-medium py-3 text-white">
-                    Turn your code into income
-                  </h1>
-                  <p className="text-sm text-neutral-400 font-sans leading-relaxed">
-                    List your repositories, track sales, and get paid all{" "}
-                    <br className="hidden xl:block" />
-                    from one dashboard.
-                  </p>
-
-                  <div className="mt-10 max-w-xs">
-                    {sellerSections.map((section) => (
-                      <span key={section.heading}>
-                        <span className="text-[13.5px] font-medium font-geist flex gap-24 pb-2">
-                          <h1 className="text-neutral-300/85 w-24">
-                            {section.heading}
-                          </h1>
-                          <h1>{section.valueHeading}</h1>
-                        </span>
-                        {section.items.map((item) => (
-                          <span
-                            key={item.label}
-                            className="text-[13.5px] py-1.5 flex gap-24 font-medium font-geist"
-                          >
+                  <FadeIn>
+                    <span className="text-[11px] uppercase tracking-wider font-bold text-blue-400 bg-blue-500/10 px-2 py-1 rounded-md">
+                      For sellers
+                    </span>
+                  </FadeIn>
+                  <FadeIn>
+                    <h1 className="text-2xl font-sans font-medium py-3 text-white">
+                      Turn your code into income
+                    </h1>
+                  </FadeIn>
+                  <FadeIn>
+                    <p className="text-sm text-neutral-400 font-sans leading-relaxed">
+                      List your repositories, track sales, and get paid all{" "}
+                      <br className="hidden xl:block" />
+                      from one dashboard.
+                    </p>
+                  </FadeIn>
+                  <FadeIn>
+                    <div className="mt-10 max-w-xs">
+                      {sellerSections.map((section) => (
+                        <span key={section.heading}>
+                          <span className="text-[13.5px] font-medium font-geist flex gap-24 pb-2">
                             <h1 className="text-neutral-300/85 w-24">
-                              {item.label}
+                              {section.heading}
                             </h1>
-                            {item.value && <h1>{item.value}</h1>}
+                            <h1>{section.valueHeading}</h1>
                           </span>
-                        ))}
-                      </span>
-                    ))}
-                  </div>
+                          {section.items.map((item) => (
+                            <span
+                              key={item.label}
+                              className="text-[13.5px] py-1.5 flex gap-24 font-medium font-geist"
+                            >
+                              <h1 className="text-neutral-300/85 w-24">
+                                {item.label}
+                              </h1>
+                              {item.value && <h1>{item.value}</h1>}
+                            </span>
+                          ))}
+                        </span>
+                      ))}
+                    </div>
+                  </FadeIn>
                 </div>
 
+                {/* Buyer */}
                 <div className="p-6">
-                  <span className="text-[11px] uppercase tracking-wider font-bold text-green-400 bg-green-500/10 px-2 py-1 rounded-md">
-                    For buyers
-                  </span>
-                  <h1 className="text-2xl font-sans font-medium py-3 text-white">
-                    Find & launch the perfect repo
-                  </h1>
-                  <p className="text-sm text-neutral-400 font-sans leading-relaxed">
-                    Browse thousands of ready-made repositories and ship your
-                    product faster.
-                  </p>
-
-                  <div className="mt-10 max-w-xs">
-                    {buyerSections.map((section) => (
-                      <span key={section.heading}>
-                        <span className="text-[13.5px] font-medium font-geist flex gap-24 pb-2">
-                          <h1 className="text-neutral-300/85 w-24 ">
-                            {section.heading}
-                          </h1>
-                          <h1>{section.valueHeading}</h1>
-                        </span>
-                        {section.items.map((item) => (
-                          <span
-                            key={item.label}
-                            className="text-[13.5px] py-[5px] flex gap-24 font-medium font-geist"
-                          >
+                  <FadeIn>
+                    <span className="text-[11px] uppercase tracking-wider font-bold text-green-400 bg-green-500/10 px-2 py-1 rounded-md">
+                      For buyers
+                    </span>
+                  </FadeIn>
+                  <FadeIn>
+                    <h1 className="text-2xl font-sans font-medium py-3 text-white">
+                      Find & launch the perfect repo
+                    </h1>
+                  </FadeIn>
+                  <FadeIn>
+                    <p className="text-sm text-neutral-400 font-sans leading-relaxed">
+                      Browse thousands of ready-made repositories and ship your
+                      product faster.
+                    </p>
+                  </FadeIn>
+                  <FadeIn>
+                    <div className="mt-10 max-w-xs">
+                      {buyerSections.map((section) => (
+                        <span key={section.heading}>
+                          <span className="text-[13.5px] font-medium font-geist flex gap-24 pb-2">
                             <h1 className="text-neutral-300/85 w-24">
-                              {item.label}
+                              {section.heading}
                             </h1>
-                            {item.value && <h1>{item.value}</h1>}
+                            <h1>{section.valueHeading}</h1>
                           </span>
-                        ))}
-                      </span>
-                    ))}
-                  </div>
+                          {section.items.map((item) => (
+                            <span
+                              key={item.label}
+                              className="text-[13.5px] py-[5px] flex gap-24 font-medium font-geist"
+                            >
+                              <h1 className="text-neutral-300/85 w-24">
+                                {item.label}
+                              </h1>
+                              {item.value && <h1>{item.value}</h1>}
+                            </span>
+                          ))}
+                        </span>
+                      ))}
+                    </div>
+                  </FadeIn>
                 </div>
               </div>
+
               <div className="w-full lg:w-[65%]">
-                <div className="border-b border-neutral-600/20 py-3 px-6">
-                  <h1 className="text-sm font-medium text-neutral-200">
-                    DevsDistro Pipeline
-                  </h1>
-                </div>
+                <FadeIn>
+                  <div className="border-b border-neutral-600/20 py-3 px-6">
+                    <h1 className="text-sm font-medium text-neutral-200">
+                      DevsDistro Pipeline
+                    </h1>
+                  </div>
+                </FadeIn>
                 <div className="p-2">
                   <DashboardAnimation />
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </>
   );

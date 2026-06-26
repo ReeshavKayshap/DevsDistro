@@ -213,22 +213,23 @@ function TimelineItem({
   event,
   index,
   isLast,
+  delay = 2.5,
 }: {
   event: any;
   index: number;
   isLast: boolean;
+  delay?: number;
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
     <div ref={ref} className="flex  gap-4">
       <div className="flex flex-col items-center w-4">
         <motion.div
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          animate={{ opacity: 1 }}
           transition={{
-            delay: 1 + index * 0.6,
+            delay: delay + index * 0.6,
             duration: 0.3,
             type: "spring",
             stiffness: 300,
@@ -246,9 +247,9 @@ function TimelineItem({
         {!isLast && (
           <motion.div
             initial={{ scaleY: 0 }}
-            animate={inView ? { scaleY: 1 } : {}}
+            animate={{ scaleY: 1 }}
             transition={{
-              delay: 1 + index * 0.6 + 0.4,
+              delay: delay + index * 0.6 + 0.4,
               duration: 0.3,
               ease: "easeOut",
             }}
@@ -260,9 +261,9 @@ function TimelineItem({
       <div className="pb-6 flex-1">
         <motion.p
           initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
-          animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{
-            delay: 1 + index * 0.6,
+            delay: delay + index * 0.6,
             duration: 0.4,
             ease: "easeOut",
           }}
@@ -274,9 +275,9 @@ function TimelineItem({
 
         <motion.p
           initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
-          animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{
-            delay: 1 + index * 0.6,
+            delay: delay + index * 0.6,
             duration: 0.4,
             ease: "easeOut",
           }}
