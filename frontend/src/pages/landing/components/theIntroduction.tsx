@@ -1,8 +1,5 @@
 import { Code2, Github } from "lucide-react";
-// import githubLockupBlackUrl from "@/assets/brand/github-lockup-black.svg?url";
-// import solanaLogoUrl from "@/assets/brand/solana-logo.svg?url";
-
-// import { landingPrimaryButtonClassName } from "./landingButtonStyles";
+import { motion } from "framer-motion";
 import Dashboard from "./Dashboard";
 
 interface PrologueProps {
@@ -11,16 +8,20 @@ interface PrologueProps {
 
 export default function Prologue({ handleAuthNavigate }: PrologueProps) {
   return (
-    <section className=" pt-52 " id="the-introduction">
+    <motion.section className=" pt-52 " id="the-introduction">
       <div className="max-w-[82rem] mx-auto w-full h-full px-3 relative pb-5">
         <div className="flex justify-between">
-          <span
+          <motion.span
+            initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true }}
             className="text-5xl md:text-7xl lg:text-[55px]
             font-sans font-semibold flex flex-col justify-end gap-2.5"
           >
             <h1>Marketplace To </h1>
             <h1>Buy & Sell Repositories</h1>
-          </span>
+          </motion.span>
 
           <div
             className="relative z-30 flex flex-col gap-4  items-end justify-end
@@ -53,6 +54,6 @@ export default function Prologue({ handleAuthNavigate }: PrologueProps) {
       </div>
 
       <Dashboard />
-    </section>
+    </motion.section>
   );
 }

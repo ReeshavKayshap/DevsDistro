@@ -1,154 +1,133 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Github, PackageCheck, Archive, ScrollText } from "lucide-react";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import {
+  Github,
+  Archive,
+  Ellipsis,
+  Key,
+  Loader2,
+  GripHorizontal,
+} from "lucide-react";
 import LogoIcon from "@/assets/icons/LogoIcon";
+import img1 from "@/assets/img1.png";
 
-const GithubOAuth = () => {
-  const [activeStep, setActiveStep] = useState(0);
-
-  useEffect(() => {
-    let t1: ReturnType<typeof setTimeout>;
-    let startDelay: ReturnType<typeof setTimeout>;
-    let master: ReturnType<typeof setInterval>;
-
-    const run = () => {
-      setActiveStep(0);
-      t1 = setTimeout(() => setActiveStep(1), 2500); // slowed from 1500 → 2500
-    };
-
-    // First time: wait 8 seconds
-    startDelay = setTimeout(() => {
-      run();
-      // After first run, repeat every 5s (2s break + 3s... wait actually:
-      // pipe duration is now 5s, so cycle = 5s + 2s break = 7s
-      master = setInterval(run, 7000); // 5s animation + 2s break
-    }, 8000);
-
-    return () => {
-      clearTimeout(startDelay);
-      clearTimeout(t1);
-      clearInterval(master);
-    };
-  }, []);
-
-  const steps = [
-    "Repository successfully encrypted and listed.",
-    "Authenticating via GitHub OAuth 2.0...",
-  ];
-
-  return (
-    <div className="mt-2 border border-neutral-800/60 rounded-xl bg-[#141414] max-w-2xl w-full">
-      <h1 className="border-b border-neutral-600/20 py-2 flex items-center justify-between gap-2 px-3 text-sm font-sans font-medium">
-        Authentication Pipeline
-      </h1>
-
-      <div className="w-full flex items-center px-8 py-4">
-        <span className="z-10 border px-6 py-4 bg-[#141414] border-neutral-800/80 rounded-xl relative">
-          <Github className="size-5" />
-        </span>
-
-        <div className="w-full h-4 relative">
-          <svg
-            className="absolute w-full h-full overflow-visible"
-            preserveAspectRatio="none"
-          >
-            {/* Base Line */}
-            <line
-              x1="0"
-              y1="50%"
-              x2="100%"
-              y2="50%"
-              stroke="#262626"
-              strokeWidth="2"
-            />
-            {/* Moving Packet */}
-            <motion.line
-              x1="-60"
-              y1="50%"
-              x2="100%"
-              y2="50%"
-              stroke="#525252"
-              strokeWidth="2"
-              strokeDasharray="40 1000"
-              animate={{ strokeDashoffset: [-40, -1000] }}
-              transition={{
-                repeat: Infinity,
-                ease: "linear",
-                duration: 5, // slowed from 3 → 5
-                delay: 0,
-              }}
-            />
-          </svg>
+const GithubOAuth = () => (
+  <>
+    <div
+      className="border border-neutral-800/60 border-b-0 rounded-2xl rounded-b-none shadow-2xl
+     p-1 mask-bottom max-w-2xl mt-4"
+    >
+      <div
+        className="bg-[#121212] border border-b-0 border-neutral-800/80 rounded-b-none 
+      rounded-xl px-5 py-3 mask-bottom flex flex-col  "
+      >
+        <div className="flex items-center justify-between">
+          <span className="text-neutral-400 font-geist text-xs font-medium tracking-wider">
+            DevsDistro
+          </span>
+          <div className="size-6 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center">
+            <Ellipsis className="size-3 text-neutral-400" />
+          </div>
         </div>
 
-        {/* Node 2 */}
-        <span className="z-10 border border-neutral-800/80 px-6 py-4 bg-[#141414] rounded-xl relative">
-          <LogoIcon className="size-5" />
-        </span>
-
-        <div className="w-full h-4 relative">
-          <svg
-            className="absolute w-full h-full overflow-visible"
-            preserveAspectRatio="none"
-          >
-            {/* Base Line */}
-            <line
-              x1="0"
-              y1="50%"
-              x2="100%"
-              y2="50%"
-              stroke="#262626"
-              strokeWidth="2"
-            />
-            {/* Moving Packet */}
-            <motion.line
-              x1="-60"
-              y1="50%"
-              x2="120%"
-              y2="50%"
-              stroke="#525252"
-              strokeWidth="2"
-              strokeDasharray="40 1000"
-              animate={{ strokeDashoffset: [-40, -1000] }}
-              transition={{
-                repeat: Infinity,
-                ease: "linear",
-                duration: 5, // slowed from 3 → 5
-                delay: 2.5, // slowed from 1.5 → 2.5
-              }}
-            />
-          </svg>
+        <div className="flex items-center gap-2.5 pt-4">
+          <Key className="size-4 text-neutral-500" />
+          <h2 className="text-neutral-300 text-sm font-semibold">
+            GitHub OAuth Connecting...
+          </h2>
         </div>
 
-        {/* Node 3 */}
-        <span className="border border-neutral-800/80 px-6 py-4 bg-[#141414] rounded-xl relative">
-          <ScrollText className="size-5" />
-        </span>
+        <div className="py-6 flex items-center w-full ">
+          <div
+            className="w-14 h-14 rounded-[14px] border border-neutral-700/80 bg-[#111111] flex items-center
+           justify-center shrink-0 z-10 shadow-lg"
+          >
+            <Github className="size-5 " />
+          </div>
+
+          <div className="flex-1 relative h-[2px] flex items-center">
+            <div className="absolute w-full h-[2px] bg-neutral-800/80" />
+
+            <div className="absolute w-full h-full overflow-hidden">
+              <motion.div
+                className="absolute h-[1.9px] w-20 bg-gradient-to-r from-transparent via-red-500 to-transparent blur-[1px]"
+                initial={{ left: "-40%" }}
+                animate={{ left: "120%" }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.5,
+                  ease: "linear",
+                  repeatDelay: 3, // wait for pipe 2 to finish (1.5s) + gap (1.5s)
+                  delay: 0,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="px-4 py-2 rounded-lg border border-neutral-700/80 bg-[#111111] flex items-center justify-center shrink-0 z-10 shadow-lg">
+            <span className="text-neutral-200 text-xs font-medium">
+              Authentication
+            </span>
+          </div>
+
+          <div className="flex-1 relative h-[2px] flex items-center">
+            <div className="absolute w-full h-[2px] bg-neutral-800/80" />
+
+            <div className="absolute w-full h-full overflow-hidden">
+              <motion.div
+                className="absolute h-[1.9px] w-20 bg-gradient-to-r from-transparent via-green-500 to-transparent blur-[1px]"
+                initial={{ left: "-40%" }}
+                animate={{ left: "120%" }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.5,
+                  ease: "linear",
+                  repeatDelay: 3, // wait for pipe 1 to finish (1.5s) + gap (1.5s)
+                  delay: 1.5, // start exactly when pipe 1 ends
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="w-14 h-14 rounded-[14px] border border-neutral-700/80 bg-[#111111] flex items-center justify-center shrink-0 z-10 shadow-lg">
+            <LogoIcon className="size-5" />
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 pb-6">
+          <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#141414] border border-neutral-800/80 rounded-lg">
+            <Loader2 className="size-3 text-neutral-100 animate-spin" />
+            <span className="text-neutral-100 text-xs font-medium ">
+              Analyzing...
+            </span>
+          </div>
+          <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#141414] border border-neutral-800/80 rounded-lg">
+            <GripHorizontal className="size-3 text-neutral-500" />
+            <span className="text-neutral-100 text-xs font-medium ">
+              Connecting
+            </span>
+          </div>
+        </div>
       </div>
-
-      <span className="border-t border-neutral-600/20 py-3 flex flex-col gap-1.5 px-3">
-        <h1 className="text-xs font-sans font-medium text-neutral-500 uppercase tracking-wider">
-          Status
-        </h1>
-        <div className="text-sm font-mono h-5 relative overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={activeStep}
-              initial={{ opacity: 0, filter: "blur(6px)", y: 6 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              exit={{ opacity: 0, filter: "blur(6px)", y: -6 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="absolute inset-0 text-neutral-200"
-            >
-              <span className="text-neutral-500 mr-1">&gt;</span>
-              {steps[activeStep]}
-            </motion.p>
-          </AnimatePresence>
-        </div>
-      </span>
     </div>
-  );
-};
+
+    {/* <div className="flex flex-col px-2">
+      <span className="text-neutral-100 font-geist-mono text-xs font-semibold tracking-wide">
+        01
+      </span>
+      <span className="flex flex-col gap-1 pt-2">
+        <h1 className="text-white text-[16px] font-semibold tracking-tight">
+          Integration
+        </h1>
+        <p className="text-neutral-400 text-sm leading-relaxed max-w-[95%]">
+          Connect via standard GitHub OAuth and our native App Integration. This
+          securely fetches your selected repositories so you can instantly list
+          them.
+        </p>
+      </span>
+    </div> */}
+  </>
+);
 
 const events = [
   {
@@ -159,19 +138,25 @@ const events = [
   {
     label: "GitHub OAuth Connecting...",
     time: "4 min ago",
-    icon: <Github className="size-3.5 " />,
+    icon: <Github className="size-4 " />,
   },
   {
-    label: "Investigating",
+    label: "GitHub Connect",
     time: "2 min ago",
-    desc: "Connect via standard GitHub OAuth and our native App Integration. This securely fetches your selected repositories so you can instantly list them.",
+    desc: "Connect with GitHub OAuth to securely fetch and instantly list your repositories.",
     preview: <GithubOAuth />,
-    // icon: <Github className="size-3 text-blue-400" strokeWidth={1.5} />,
   },
   {
-    label: "Solana Settlement",
+    label: "Buy repos. Pay on-chain.",
     time: "3 min ago",
-    desc: "The buyer connects their Phantom or Solflare wallet and executes the purchase on-chain. Settled instantly in USDC or native SOL.",
+    desc: "Connect your Phantom or Solflare wallet and purchase instantly — settled in USDC or SOL",
+    icon: (
+      <img
+        src={img1}
+        alt="solana"
+        className="size-4 rounded-full object-cover"
+      />
+    ),
   },
   {
     label: "Solana Connecting...",
@@ -214,7 +199,7 @@ const events = [
     label: "Purchase Complete",
     time: "3 min ago",
     desc: "The repository is now transferred to the buyer, and the seller receives their earnings instantly. ",
-    icon: <PackageCheck className="size-3 text-green-400" strokeWidth={1.5} />,
+    // icon: <PackageCheck className="size-3 text-green-400" strokeWidth={1.5} />,
   },
   {
     label: "Archive Delivery",
@@ -243,8 +228,8 @@ function TimelineItem({
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{
-            delay: index * 0.6,
-            duration: 0.4,
+            delay: 1 + index * 0.6,
+            duration: 0.3,
             type: "spring",
             stiffness: 300,
           }}
@@ -263,8 +248,8 @@ function TimelineItem({
             initial={{ scaleY: 0 }}
             animate={inView ? { scaleY: 1 } : {}}
             transition={{
-              delay: index * 0.6 + 0.5,
-              duration: 0.4,
+              delay: 1 + index * 0.6 + 0.4,
+              duration: 0.3,
               ease: "easeOut",
             }}
             className="w-[0.5px] flex-1 bg-neutral-700/80 my-2 origin-top"
@@ -274,11 +259,11 @@ function TimelineItem({
 
       <div className="pb-6 flex-1">
         <motion.p
-          initial={{ opacity: 0, y: 2, filter: "blur(3.5px)" }}
+          initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
           animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
           transition={{
-            delay: index * 0.6,
-            duration: 0.5,
+            delay: 1 + index * 0.6,
+            duration: 0.4,
             ease: "easeOut",
           }}
           className="text-xs font-medium text-neutral-500 mb-0.5 tracking-wide"
@@ -288,14 +273,14 @@ function TimelineItem({
         </motion.p>
 
         <motion.p
-          initial={{ opacity: 0, y: 2, filter: "blur(4px)" }}
+          initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
           animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
           transition={{
-            delay: index * 0.6,
-            duration: 0.5,
+            delay: 1 + index * 0.6,
+            duration: 0.4,
             ease: "easeOut",
           }}
-          className="text-sm text-neutral-100 leading-relaxed"
+          className="text-[13px] text-neutral-100 leading-relaxed"
         >
           {event.desc}
           {event.preview ? event.preview : ""}
@@ -307,7 +292,7 @@ function TimelineItem({
 
 export default function DashboardAnimation() {
   return (
-    <div className="flex flex-col items-center justify-center px-6 pt-6 pb-0 md:px-4 font-sans antialiased">
+    <div className="flex flex-col items-center justify-center px-6 pt-6 pb-0 md:p-8 font-sans antialiased">
       <div className="w-full ">
         {events.map((event, i) => (
           <TimelineItem

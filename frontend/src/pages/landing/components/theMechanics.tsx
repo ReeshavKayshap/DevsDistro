@@ -1,16 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 // import MechanicsDiagram from "./MechanicsDiagram";
-import {
-  Ellipsis,
-  Github,
-  GripHorizontal,
-  Key,
-  KeyRound,
-  Loader2,
-  Lock,
-  User,
-} from "lucide-react";
+import { Ellipsis, Github, GripHorizontal, Key, Loader2 } from "lucide-react";
 import LogoIcon from "@/assets/icons/LogoIcon";
 
 const NODE_SEQUENCE_MS = 2800;
@@ -93,10 +84,10 @@ export default function TheMechanics() {
   return (
     <section
       ref={sectionRef}
-      className="py-32 px-6 md:px-12  text-neutral-900 dark:text-white transition-colors duration-300 relative"
+      className="py-32 px-6 md:px-3  text-neutral-900 dark:text-white transition-colors duration-300 relative"
       id="mechanics"
     >
-      <div className="landing-dotted-rule landing-dotted-b absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl pointer-events-none z-20"></div>
+      {/* <div className="landing-dotted-rule landing-dotted-b absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl pointer-events-none z-20"></div> */}
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-6 border-b-4 border-black/20 dark:border-white/20 pb-4  transition-colors w-fit mx-auto md:mx-0">
@@ -113,13 +104,13 @@ export default function TheMechanics() {
           </h2>
         </div>
 
-        <div className="flex gap-3 w-full ">
+        <div className="flex gap-8 w-full ">
           <div className="w-full  h-full">
             <GithubCard />
           </div>
-          <div className="w-full  h-full">{/* <GithubCard /> */}</div>
-          <div className="w-full bg-neutral-700 h-full">
-            {/* <TicketCard /> */}
+          <div className="w-full  h-full">{<Payment />}</div>
+          <div className="w-full h-full">
+            <GithubCard />
           </div>
         </div>
 
@@ -347,3 +338,42 @@ const GithubCard = () => (
     </div>
   </>
 );
+
+const Payment = () => {
+  return (
+    <>
+      <div className="border border-neutral-900 border-b-0 rounded-2xl rounded-b-none shadow-2xl p-1 mask-bottom">
+        <div
+          className="bg-[#0a0a0a] border border-b-0 border-neutral-800/60 rounded-b-none 
+      rounded-xl px-5 py-3 shadow-2xl mb-6  mask-bottom flex flex-col  "
+        >
+          <span className="flex items-center">
+            {" "}
+            <span className="w-32 bg-neutral-900 h-24 rounded-xl">hello</span>
+            <div className="flex-1 relative h-[2px] flex items-center">
+              <div className="absolute w-full h-[2px] bg-neutral-800/80" />
+
+              <div className="absolute w-full h-full overflow-hidden">
+                <motion.div
+                  className="absolute h-[1.9px] w-20 bg-gradient-to-r from-transparent via-red-500 to-transparent blur-[1px]"
+                  initial={{ left: "-40%" }}
+                  animate={{ left: "120%" }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 1.5,
+                    ease: "linear",
+                    repeatDelay: 1,
+                  }}
+                />
+              </div>
+            </div>
+            <div className="w-14 h-14 rounded-[14px] border border-neutral-800/80 bg-[#111111] flex items-center justify-center shrink-0 z-10 shadow-lg">
+              <LogoIcon className="size-5" />
+            </div>
+            <span className="w-32 bg-neutral-900 h-24 rounded-xl">hello</span>
+          </span>
+        </div>
+      </div>
+    </>
+  );
+};

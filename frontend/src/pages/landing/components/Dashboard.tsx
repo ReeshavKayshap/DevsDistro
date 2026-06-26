@@ -89,6 +89,7 @@ export default function App() {
       heading: "My Space",
       valueHeading: "Status",
       items: [
+        { label: "Buyer", value: "Alex" },
         { label: "Marketplace", value: "5 repos" },
         { label: "Wishlist", value: "+12 sales" },
         { label: "Purchases", value: "↗ $3.8k" },
@@ -103,7 +104,7 @@ export default function App() {
            -translate-y-1/2 rounded-[300px] blur-[50px] will-change-transform md:left-1/2 md:h-[53.5rem] md:-translate-x-1/2"
           style={{
             background:
-              "linear-gradient(180deg, rgba(255, 30, 30, 0.2) 0%, rgba(255, 30, 30, 0.05) 20%, rgba(255, 30, 30, 0.05) 71%, rgba(255, 30, 30, 0.05) 100%, transparent 70%)",
+              "linear-gradient(180deg, rgba(255, 30, 30, 0.38) 0%, rgba(255, 30, 30, 0.09) 30%, rgba(255, 30, 30, 0.06) 60%, rgba(255, 30, 30, 0.06) 100%, transparent 70%)",
             opacity: 1,
           }}
         ></div>
@@ -164,7 +165,7 @@ export default function App() {
                   <div className="mt-10 max-w-xs">
                     {sellerSections.map((section) => (
                       <span key={section.heading}>
-                        <span className="text-sm font-medium font-geist py-1 flex gap-24">
+                        <span className="text-[13.5px] font-medium font-geist flex gap-24 pb-2">
                           <h1 className="text-neutral-300/85 w-24">
                             {section.heading}
                           </h1>
@@ -173,7 +174,7 @@ export default function App() {
                         {section.items.map((item) => (
                           <span
                             key={item.label}
-                            className="text-sm py-2 flex gap-24 font-medium font-geist"
+                            className="text-[13.5px] py-1.5 flex gap-24 font-medium font-geist"
                           >
                             <h1 className="text-neutral-300/85 w-24">
                               {item.label}
@@ -201,8 +202,8 @@ export default function App() {
                   <div className="mt-10 max-w-xs">
                     {buyerSections.map((section) => (
                       <span key={section.heading}>
-                        <span className="text-sm font-medium font-geist py-1 flex gap-24">
-                          <h1 className="text-neutral-300/85 w-24">
+                        <span className="text-[13.5px] font-medium font-geist flex gap-24 pb-2">
+                          <h1 className="text-neutral-300/85 w-24 ">
                             {section.heading}
                           </h1>
                           <h1>{section.valueHeading}</h1>
@@ -210,7 +211,7 @@ export default function App() {
                         {section.items.map((item) => (
                           <span
                             key={item.label}
-                            className="text-sm py-2 flex gap-24 font-medium font-geist"
+                            className="text-[13.5px] py-[5px] flex gap-24 font-medium font-geist"
                           >
                             <h1 className="text-neutral-300/85 w-24">
                               {item.label}
