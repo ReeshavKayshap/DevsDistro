@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Github,
   Archive,
@@ -14,39 +14,39 @@ import img1 from "@/assets/img1.png";
 const GithubOAuth = () => (
   <>
     <div
-      className="border border-neutral-800/60 border-b-0 rounded-2xl rounded-b-none shadow-2xl
+      className="border border-neutral-200 dark:border-neutral-800/60 border-b-0 rounded-2xl rounded-b-none shadow-2xl
      p-1 mask-bottom max-w-2xl mt-4"
     >
       <div
-        className="bg-[#121212] border border-b-0 border-neutral-800/80 rounded-b-none 
+        className="dark:bg-[#121212] bg-neutral-50 border border-b-0 border-neutral-200 dark:border-neutral-800/80 rounded-b-none 
       rounded-xl px-5 py-3 mask-bottom flex flex-col  "
       >
         <div className="flex items-center justify-between">
-          <span className="text-neutral-400 font-geist text-xs font-medium tracking-wider">
+          <span className="text-neutral-600 dark:text-neutral-400 font-geist text-xs font-medium tracking-wider">
             DevsDistro
           </span>
-          <div className="size-6 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center">
+          <div className="size-6 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 flex items-center justify-center">
             <Ellipsis className="size-3 text-neutral-400" />
           </div>
         </div>
 
         <div className="flex items-center gap-2.5 pt-4">
           <Key className="size-4 text-neutral-500" />
-          <h2 className="text-neutral-300 text-sm font-semibold">
+          <h2 className="text-neutral-600 dark:text-neutral-300 text-sm font-semibold">
             GitHub OAuth Connecting...
           </h2>
         </div>
 
         <div className="py-6 flex items-center w-full ">
           <div
-            className="w-14 h-14 rounded-[14px] border border-neutral-700/80 bg-[#111111] flex items-center
-           justify-center shrink-0 z-10 shadow-lg"
+            className="w-14 h-14 rounded-[14px] border border-neutral-300/80 dark:border-neutral-700/80 bg-neutral-50 dark:bg-[#111111] flex items-center
+           justify-center shrink-0 z-10 shadow-md"
           >
             <Github className="size-5 " />
           </div>
 
           <div className="flex-1 relative h-[2px] flex items-center">
-            <div className="absolute w-full h-[2px] bg-neutral-800/80" />
+            <div className="absolute w-full h-[2px] bg-neutral-200 dark:bg-neutral-800/80" />
 
             <div className="absolute w-full h-full overflow-hidden">
               <motion.div
@@ -64,14 +64,14 @@ const GithubOAuth = () => (
             </div>
           </div>
 
-          <div className="px-4 py-2 rounded-lg border border-neutral-700/80 bg-[#111111] flex items-center justify-center shrink-0 z-10 shadow-lg">
-            <span className="text-neutral-200 text-xs font-medium">
+          <div className="px-4 py-2 rounded-lg border border-neutral-300/80 dark:border-neutral-700/80 bg-neutral-50 dark:bg-[#111111] flex items-center justify-center shrink-0 z-10 shadow-md">
+            <span className="text-neutral-600 dark:text-neutral-300 text-xs font-medium">
               Authentication
             </span>
           </div>
 
           <div className="flex-1 relative h-[2px] flex items-center">
-            <div className="absolute w-full h-[2px] bg-neutral-800/80" />
+            <div className="absolute w-full h-[2px] bg-neutral-200 dark:bg-neutral-800/80" />
 
             <div className="absolute w-full h-full overflow-hidden">
               <motion.div
@@ -89,21 +89,30 @@ const GithubOAuth = () => (
             </div>
           </div>
 
-          <div className="w-14 h-14 rounded-[14px] border border-neutral-700/80 bg-[#111111] flex items-center justify-center shrink-0 z-10 shadow-lg">
+          <div
+            className="w-14 h-14 rounded-[14px] border border-neutral-300/80 dark:border-neutral-700/80 bg-neutral-50 dark:bg-[#111111] flex items-center
+           justify-center shrink-0 z-10 shadow-md"
+          >
             <LogoIcon className="size-5" />
           </div>
         </div>
 
         <div className="flex items-center gap-2 pb-6">
-          <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#141414] border border-neutral-800/80 rounded-lg">
-            <Loader2 className="size-3 text-neutral-100 animate-spin" />
-            <span className="text-neutral-100 text-xs font-medium ">
+          <div
+            className="flex items-center gap-1.5 px-2.5 py-1.5 bg-neutral-50 dark:bg-[#141414] border border-neutral-300/80
+           dark:border-neutral-700/80 rounded-lg shadow-sm"
+          >
+            <Loader2 className="size-3 text-neutral-600 dark:text-neutral-100 animate-spin" />
+            <span className="text-neutral-600 dark:text-neutral-100 text-xs font-medium ">
               Analyzing...
             </span>
           </div>
-          <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#141414] border border-neutral-800/80 rounded-lg">
-            <GripHorizontal className="size-3 text-neutral-500" />
-            <span className="text-neutral-100 text-xs font-medium ">
+          <div
+            className="flex items-center gap-1.5 px-2.5 py-1.5 bg-neutral-50 dark:bg-[#141414] border border-neutral-300/80
+           dark:border-neutral-700/80 rounded-lg shadow-sm"
+          >
+            <GripHorizontal className="size-3 text-neutral-600 dark:text-neutral-100" />
+            <span className="text-neutral-600 dark:text-neutral-100 text-xs font-medium ">
               Connecting
             </span>
           </div>
@@ -241,7 +250,7 @@ function TimelineItem({
               {event.icon}
             </span>
           ) : (
-            <span className="size-1 rounded-full bg-neutral-700 block mt-1.5" />
+            <span className="size-1 rounded-full bg-neutral-400 dark:bg-neutral-700 block mt-1.5" />
           )}
         </motion.div>
         {!isLast && (
@@ -253,7 +262,7 @@ function TimelineItem({
               duration: 0.3,
               ease: "easeOut",
             }}
-            className="w-[0.5px] flex-1 bg-neutral-700/80 my-2 origin-top"
+            className="w-[0.5px] flex-1 dark:bg-neutral-700/80 bg-neutral-300 my-2 origin-top"
           />
         )}
       </div>
@@ -269,7 +278,10 @@ function TimelineItem({
           }}
           className="text-xs font-medium text-neutral-500 mb-0.5 tracking-wide"
         >
-          <span className="text-neutral-300/80"> {event.label}</span>
+          <span className="text-neutral-600 dark:text-neutral-300/85">
+            {" "}
+            {event.label}
+          </span>
           <span className="mx-1">·</span> {event.time}
         </motion.p>
 
@@ -281,7 +293,7 @@ function TimelineItem({
             duration: 0.4,
             ease: "easeOut",
           }}
-          className="text-[13px] text-neutral-100 leading-relaxed"
+          className="text-[13px] text-neutral-900 dark:text-neutral-100 leading-relaxed"
         >
           {event.desc}
           {event.preview ? event.preview : ""}

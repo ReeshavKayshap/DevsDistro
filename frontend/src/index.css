@@ -231,3 +231,11 @@ input[type="number"] {
 .dark .dark\:bg-\[\#080808\] {
   background-color: hsl(var(--background)) !important;
 }
+
+/* Disable transitions temporarily during theme changes */
+.no-transitions *,
+.no-transitions *::before,
+.no-transitions *::after {
+  transition: none !important;
+  animation: none !important;
+}

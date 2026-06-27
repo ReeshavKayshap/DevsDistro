@@ -138,45 +138,52 @@ export default function Dashboard() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
-          className="relative z-10 w-full bg-white/5 border border-white/10 backdrop-blur-md max-w-[90rem] mx-auto
-     rounded-2xl flex p-1 shadow-2xl"
+          className="relative z-10 w-full bg-[#EBEBEB]/70 dark:bg-white/5 border border-neutral-200 dark:border-white/10 backdrop-blur-md max-w-[90rem] mx-auto
+     rounded-2xl flex p-1 shadow-xl"
         >
           <div className="h-full w-[3%] hidden md:block"></div>
-          <div className="h-full w-full md:w-[97%] bg-[#0B0B0B] rounded-xl overflow-hidden z-20">
-            <div className="border-b border-neutral-600/20 ">
+          <div className="h-full w-full md:w-[97%] bg-white dark:bg-[#0B0B0B] rounded-xl overflow-hidden z-20">
+            <div className="border-b border-neutral-200/60 dark:border-neutral-600/20 ">
               <FadeIn className="py-2 flex flex-wrap items-center justify-between gap-2 px-3">
                 <span className="flex items-center gap-2">
-                  <PanelLeft size={16} className="text-neutral-600" />
-                  <span className="text-neutral-400 text-sm font-sans hidden sm:block">
+                  <PanelLeft size={16} className="text-neutral-500" />
+                  <span className="text-neutral-500 dark:text-neutral-400 text-sm font-sans font-semibold hidden sm:block">
                     Dashboard
                   </span>
                   <ChevronRight
                     size={16}
-                    className="mt-[1.6px] text-neutral-700/80 hidden sm:block"
+                    className="mt-[1.6px] text-neutral-500 hidden sm:block"
                   />
-                  <span className="text-neutral-100 text-sm font-sans font-medium">
+                  <span className="text-neutral-900 dark:text-neutral-100 text-sm font-sans font-medium">
                     DevsDistro Architecture
                   </span>
                 </span>
                 <span className="flex items-center gap-2">
                   <button
-                    className="text-neutral-300/90 hover:text-neutral-100 active:scale-[97%] duration-200 ease-out bg-neutral-700/20 px-4 py-1.5 rounded-md 
-         ring-1 ring-neutral-800/80 flex items-center gap-2 cursor-pointer transition-colors hover:bg-neutral-700/40"
+                    className="text-neutral-500 dark:text-neutral-300/90 hover:text-neutral-900 dark:hover:text-neutral-100 active:scale-[97%] duration-200 ease-out
+                     bg-white dark:bg-neutral-700/20 px-4 py-1.5 rounded-md shadow-sm hover:bg-neutral-50 dark:hover:bg-neutral-800/70
+                     ring-1 ring-neutral-200/80 dark:ring-neutral-800/80 flex items-center gap-2 cursor-pointer transition-colors "
                   >
                     <LogOut size={14} className="mt-px" />
                     <span className="text-[13px] font-sans font-semibold">
                       LogOut
                     </span>
                   </button>
-                  <span className="bg-neutral-700/20 p-1.5 rounded-md ring-1 ring-neutral-800/80 active:scale-[97%] cursor-pointer hover:bg-neutral-700/40 transition-colors">
-                    <Ellipsis size={16} className="text-neutral-300" />
+                  <span
+                    className="bg-white dark:bg-neutral-700/20 px-2  py-2 rounded-md ring-1 ring-neutral-200/80 dark:ring-neutral-800/80 active:scale-[97%] 
+                  cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-700/40  transition-colors shadow-sm"
+                  >
+                    <Ellipsis
+                      size={14}
+                      className="text-neutral-500 dark:text-neutral-300/90 "
+                    />
                   </span>
                 </span>
               </FadeIn>
             </div>
 
             <div className="flex flex-col lg:flex-row h-full w-full">
-              <div className="w-full lg:w-[35%] border-b lg:border-b-0 lg:border-r border-neutral-600/20 divide-y divide-neutral-600/20">
+              <div className="w-full lg:w-[35%] border-b lg:border-b-0 lg:border-r border-neutral-200/60 dark:border-neutral-600/20 divide-y divide-neutral-200/60 dark:divide-neutral-600/20">
                 <div className="p-6">
                   <FadeIn>
                     <span className="text-[11px] uppercase tracking-wider font-bold text-blue-400 bg-blue-500/10 px-2 py-1 rounded-md">
@@ -184,12 +191,12 @@ export default function Dashboard() {
                     </span>
                   </FadeIn>
                   <FadeIn>
-                    <h1 className="text-2xl font-sans font-medium py-3 text-white">
+                    <h1 className="text-2xl font-sans font-medium py-3 text-neutral-950 dark:text-white">
                       Turn your code into income
                     </h1>
                   </FadeIn>
                   <FadeIn>
-                    <p className="text-sm text-neutral-400 font-sans leading-relaxed">
+                    <p className="text-sm text-neutral-600 dark:text-neutral-300/85 font-sans leading-relaxed">
                       List your repositories, track sales, and get paid all{" "}
                       <br className="hidden xl:block" />
                       from one dashboard.
@@ -200,7 +207,7 @@ export default function Dashboard() {
                       {sellerSections.map((section) => (
                         <span key={section.heading}>
                           <span className="text-[13.5px] font-medium font-geist flex gap-24 pb-2">
-                            <h1 className="text-neutral-300/85 w-24">
+                            <h1 className="text-neutral-500 dark:text-neutral-300/85 w-24">
                               {section.heading}
                             </h1>
                             <h1>{section.valueHeading}</h1>
@@ -210,7 +217,7 @@ export default function Dashboard() {
                               key={item.label}
                               className="text-[13.5px] py-1.5 flex gap-24 font-medium font-geist"
                             >
-                              <h1 className="text-neutral-300/85 w-24">
+                              <h1 className="text-neutral-500 dark:text-neutral-300/85 w-24">
                                 {item.label}
                               </h1>
                               {item.value && <h1>{item.value}</h1>}
@@ -230,12 +237,12 @@ export default function Dashboard() {
                     </span>
                   </FadeIn>
                   <FadeIn>
-                    <h1 className="text-2xl font-sans font-medium py-3 text-white">
+                    <h1 className="text-2xl font-sans font-medium py-3 text-neutral-950 dark:text-white">
                       Find & launch the perfect repo
                     </h1>
                   </FadeIn>
                   <FadeIn>
-                    <p className="text-sm text-neutral-400 font-sans leading-relaxed">
+                    <p className="text-sm text-neutral-600 dark:text-neutral-300/85 font-sans leading-relaxed">
                       Browse thousands of ready-made repositories and ship your
                       product faster.
                     </p>
@@ -245,7 +252,7 @@ export default function Dashboard() {
                       {buyerSections.map((section) => (
                         <span key={section.heading}>
                           <span className="text-[13.5px] font-medium font-geist flex gap-24 pb-2">
-                            <h1 className="text-neutral-300/85 w-24">
+                            <h1 className="text-neutral-500 dark:text-neutral-300/85 w-24">
                               {section.heading}
                             </h1>
                             <h1>{section.valueHeading}</h1>
@@ -255,7 +262,7 @@ export default function Dashboard() {
                               key={item.label}
                               className="text-[13.5px] py-[5px] flex gap-24 font-medium font-geist"
                             >
-                              <h1 className="text-neutral-300/85 w-24">
+                              <h1 className="text-neutral-500 dark:text-neutral-300/85 w-24">
                                 {item.label}
                               </h1>
                               {item.value && <h1>{item.value}</h1>}
@@ -270,8 +277,8 @@ export default function Dashboard() {
 
               <div className="w-full lg:w-[65%]">
                 <FadeIn>
-                  <div className="border-b border-neutral-600/20 py-3 px-6">
-                    <h1 className="text-sm font-medium text-neutral-200">
+                  <div className="border-b border-neutral-200/60 dark:border-neutral-600/20 py-2 px-6">
+                    <h1 className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
                       DevsDistro Pipeline
                     </h1>
                   </div>

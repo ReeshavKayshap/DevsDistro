@@ -18,7 +18,20 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    
+    // Disable transitions temporarily during theme toggle
+    document.documentElement.classList.add("no-transitions");
+    
     document.documentElement.classList.toggle("dark", isDarkMode);
+    
+    // Force reflow to flush styles immediately
+    void document.documentElement.offsetHeight;
+    
+    const timer = setTimeout(() => {
+      document.documentElement.classList.remove("no-transitions");
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [isDarkMode]);
 
   return (

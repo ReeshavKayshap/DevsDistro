@@ -35,7 +35,7 @@ export default function TheMechanics() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [hasStartedDiagram, setHasStartedDiagram] = useState(false);
   const [autoMechanicIndex, setAutoMechanicIndex] = useState<number>(0);
-  const [diagramReplayKey, setDiagramReplayKey] = useState(0);
+
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -73,7 +73,7 @@ export default function TheMechanics() {
     }, NODE_SEQUENCE_MS);
 
     return () => window.clearTimeout(timeout);
-  }, [autoMechanicIndex, diagramReplayKey, hasStartedDiagram]);
+  }, [autoMechanicIndex, hasStartedDiagram]);
 
   // const handleStepSelect = (index: number) => {
   //   setHasStartedDiagram(true);

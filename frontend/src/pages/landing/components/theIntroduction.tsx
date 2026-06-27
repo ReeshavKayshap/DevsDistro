@@ -46,15 +46,15 @@ export default function Prologue({ handleAuthNavigate }: PrologueProps) {
             >
               <button
                 onClick={handleAuthNavigate}
-                className="flex items-center gap-2 rounded-xl dark:bg-neutral-900 bg-white hover:bg-neutral-200 hover:dark:bg-neutral-800/80 transition-all duration-200 ease-out
-     border dark:border-neutral-800 border-neutral-300 text-black dark:text-white font-semibold px-3 py-2 text-[13px]"
+                className="flex items-center gap-2 rounded-xl dark:bg-neutral-900 bg-white hover:bg-neutral-50 hover:dark:bg-neutral-800/80 transition-all duration-200 ease-out
+     border dark:border-neutral-800 border-neutral-200 text-black dark:text-white font-semibold px-3 py-2 text-[13px]"
               >
                 Open Source
                 <Github size={18} />
               </button>
               <button
                 onClick={handleAuthNavigate}
-                className="flex items-center gap-2 rounded-xl bg-neutral-900 dark:bg-white hover:dark:bg-neutral-200 hover:bg-neutral-800/80 transition-all duration-200 ease-out
+                className="flex items-center gap-2 rounded-xl bg-neutral-900 dark:bg-white hover:dark:bg-neutral-200 hover:bg-neutral-800 transition-all duration-200 ease-out
      border border-neutral-800 dark:border-neutral-800 text-white dark:text-black font-semibold px-3 py-2 text-[13px]"
               >
                 Get Started

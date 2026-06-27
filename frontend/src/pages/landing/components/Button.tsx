@@ -1,5 +1,5 @@
 import React from "react";
-import { Settings, Trash2, ChevronRight, Mail } from "lucide-react";
+
 import clsx from "clsx";
 
 // ============================================================================
